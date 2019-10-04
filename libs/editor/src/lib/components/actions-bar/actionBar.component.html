@@ -1,0 +1,17 @@
+<ng-template ngFor let-row [ngForOf]="config">
+  <div class="editor-action-bar-row">
+    <ng-template ngFor let-action [ngForOf]="row">
+      <div *ngIf="action === 'separator'; then separatorContainer"></div>
+      <div *ngIf="action !== 'separator'; then actionContainer"></div>
+
+      <ng-template #separatorContainer>
+        <div class="separator">
+          <fa-icon [icon]="faEllipsisV"></fa-icon>
+        </div>
+      </ng-template>
+      <ng-template #actionContainer>
+        <editor-action [action]="action"></editor-action>
+      </ng-template>
+    </ng-template>
+  </div>
+</ng-template>

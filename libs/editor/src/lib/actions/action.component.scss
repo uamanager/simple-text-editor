@@ -1,0 +1,29 @@
+button {
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: white;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  line-height: 36px;
+  padding: 0 10px;
+  border-radius: 4px;
+  overflow: visible;
+  transform: translate3d(0, 0, 0);
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1)
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

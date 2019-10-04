@@ -1,0 +1,25 @@
+:host {
+  display: block;
+
+  .editor-action-bar-row {
+    padding: 3px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    overflow-x: auto;
+  }
+
+  .separator {
+    color: rgba(0, 0, 0, 0.37);
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    line-height: 36px;
+    padding: 0 3px;
+    border-radius: 4px;
+    overflow: visible;
+  }
+}

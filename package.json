@@ -17,12 +17,14 @@
     "@angular/compiler": "^8.2.0",
     "@angular/core": "^8.2.0",
     "@angular/forms": "^8.2.0",
-    "@angular/material": "^8.2.2",
     "@angular/platform-browser": "^8.2.0",
     "@angular/platform-browser-dynamic": "^8.2.0",
     "@angular/router": "^8.2.0",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@fortawesome/angular-fontawesome": "^0.5.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@nrwl/angular": "8.6.0",
     "commitizen": "^4.0.3",
     "core-js": "^2.5.4",
@@ -63,9 +65,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "nps affected.lint",
-      "pre-push": "nps affected.lint"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }

@@ -1,0 +1,4 @@
+<editor-action-bar *ngIf="config.length" [config]="config" (change)="onChange($event)"></editor-action-bar>
+<div class="editor-container">
+  <div #editor class="editor" contenteditable></div>
+</div>

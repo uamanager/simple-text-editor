@@ -6,5 +6,21 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = "editor-showcase";
+  config = [
+    [
+      "bold",
+      "italic",
+      "underline",
+      "separator",
+      "tabulation",
+      "separator",
+      "color"
+    ],
+    ["synonym"]
+  ];
+  sample = "<p>This <u>text</u> can be <i>edited</i> by <b>user</b>.</p>";
+
+  onChange ($event) {
+    console.warn($event);
+  }
 }

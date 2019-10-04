@@ -1,8 +1,10 @@
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from "@angular/core";
 import { EditorModule } from "../../editor.module";
 import { EditorSynonymActionComponent } from "./synonym.component";
-import { SynonymService } from "./synonym.service";
+import { EditorSynonymDataService } from './synonym.data';
+import { EditorSynonymService } from "./synonym.service";
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { SynonymService } from "./synonym.service";
         }
       ]
     }),
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
     EditorSynonymActionComponent
   ],
   providers: [
-    SynonymService
+    EditorSynonymService,
+    EditorSynonymDataService
   ]
 })
 export class EditorSynonymActionModule {

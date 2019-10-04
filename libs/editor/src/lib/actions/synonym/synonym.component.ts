@@ -1,33 +1,38 @@
-import { Component, OnInit } from "@angular/core";
-import { debounce, map } from "rxjs/operators";
-import { EditorSandbox } from "../../editor.sandbox";
+import { Component, OnInit } from '@angular/core';
+import { EditorSandbox } from '../../editor.sandbox';
+import { EditorSynonymService } from './synonym.service';
 
 @Component({
-  selector: "editor-action-synonym",
+  selector: 'editor-action-synonym',
   template: `
-	  <button *ngFor="let color of colors" (click)="setSynonym(color)">{{color}}</button>
+	    <div *ngIf="synonyms.length === 0; then synonymsNotFound; else synonymsList"></div>
+
+	    <ng-template #synonymsList>
+		    <button *ngFor="let synonym of synonyms" (click)="setSynonym(synonym)">{{synonym}}</button>
+	    </ng-template>
+
+	    <ng-template #synonymsNotFound>
+		    <p>Select text to search for synonyms...</p>
+	    </ng-template>
   `,
-  styleUrls: ["../action.component.scss"]
+  styleUrls: ['../action.component.scss']
 })
 export class EditorSynonymActionComponent implements OnInit {
-  public colors = ["dasds", "fasfafsfa", "afasdgasdgs", "sfasdgasdgsadg"];
+  public synonyms = [];
 
-  constructor (private $editor: EditorSandbox) {}
-
-  setSynonym (value: string) {
-    this.$editor.execCommand("insertText", value);
-  }
+  constructor (
+    private $editor: EditorSandbox,
+    private $synonym: EditorSynonymService
+  ) {}
 
   public ngOnInit (): void {
-    this.$editor.range.pipe(
-        map((range) => {
-          const value = this.$editor.value.getValue();
-          const element = document.createElement('div');
-          element.innerHTML = value;
-          const text = element.innerText;
-          text.slice(range.start, range.end - range.start)
-        })
-      )
-      .subscribe()
+    this.$synonym.get()
+      .subscribe((res) => {
+        this.synonyms = res;
+      });
+  }
+
+  public setSynonym (value: string) {
+    this.$editor.execCommand('insertText', value);
   }
 }

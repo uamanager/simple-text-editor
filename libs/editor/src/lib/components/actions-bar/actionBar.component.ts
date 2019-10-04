@@ -14,7 +14,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
   selector: "editor-action-bar",
   templateUrl: "./actionBar.component.html",
   styleUrls: ["./actionBar.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditorActionBarComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() config: string[][];
@@ -34,7 +34,7 @@ export class EditorActionBarComponent implements OnInit, OnChanges, AfterViewIni
   }
 
   ngAfterViewInit (): void {
-    this.$cdr.detach();
+    // this.$cdr.detach();
   }
 
   private applyChanges (): void {

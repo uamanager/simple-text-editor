@@ -1,15 +1,13 @@
 # SimpleTextEditor
 
-## Development server
+The main idea was to create WYSIWYG editor with extendable actions.
+Current version contains bold/italic/underline, indent/outdent, color and synonyms search actions.
 
-Run `nps serve editor-showcase` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-## Build
+## 1) Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `yarn install` in terminal
 
-## Running unit tests
+## 2) Development server
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
+Run `nps serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

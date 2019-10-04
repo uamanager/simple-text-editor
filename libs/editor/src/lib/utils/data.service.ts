@@ -25,7 +25,6 @@ export class GenericDataService<T extends { id: string }> {
     if (this.check(id)) {
       this.error(`can't create item with id ${id}.`);
     }
-    console.log(id);
     this.value[id] = value;
   }
 

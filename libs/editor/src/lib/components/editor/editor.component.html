@@ -1,4 +1,4 @@
-<editor-action-bar *ngIf="config.length" [config]="config" (change)="onChange($event)"></editor-action-bar>
+<editor-action-bar *ngIf="config.length" [config]="config"></editor-action-bar>
 <div class="editor-container">
-  <div #editor class="editor" contenteditable></div>
+  <div #editor class="editor" contenteditable (keyup)="keyup($event)" (click)="click($event)"></div>
 </div>

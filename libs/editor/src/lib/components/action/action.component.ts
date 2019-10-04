@@ -10,13 +10,19 @@ import { EditorSandbox } from "../../editor.sandbox";
 
 @Component({
   selector: "editor-action",
-  templateUrl: "./action.component.html",
-  styleUrls: ["./action.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: "<ng-template #actionContainer></ng-template>",
+  styles: [`
+    :host {
+        display: inline-flex;
+        width: auto;
+        height: auto;
+    }
+  `],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditorActionComponent implements OnInit, OnChanges, AfterViewInit  {
   @Input() action: string;
-  @ViewChild('actionContainer', { static: true, read: ViewContainerRef }) actionContainerRef;
+  @ViewChild('actionContainer', { static: false, read: ViewContainerRef }) actionContainerRef;
 
   public actionRef: ComponentRef<Component>;
 
@@ -37,7 +43,7 @@ export class EditorActionComponent implements OnInit, OnChanges, AfterViewInit  
   }
 
   ngAfterViewInit (): void {
-    this.$cdr.detach();
+    // this.$cdr.detach();
   }
 
   private applyChanges (): void {

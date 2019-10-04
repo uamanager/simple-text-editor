@@ -21,6 +21,6 @@ export class AppComponent {
   sample = "<p>This <u>text</u> can be <i>edited</i> by <b>user</b>.</p>";
 
   onChange ($event) {
-    console.warn($event);
+    console.log($event);
   }
 }

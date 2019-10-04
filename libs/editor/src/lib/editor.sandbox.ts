@@ -12,10 +12,7 @@ export interface IEditorSetupConfig {
 export class EditorSandbox {
   public value: BehaviorSubject<string> = new BehaviorSubject('');
   public change: Subject<any> = new Subject();
-  public range: BehaviorSubject<any> = new BehaviorSubject({
-    start: 0,
-    end: 0
-  });
+  public selection: BehaviorSubject<string> = new BehaviorSubject('');
   constructor (private $action: EditorActionService) {}
 
   public setSetupConfig (config: IEditorSetupConfig) {

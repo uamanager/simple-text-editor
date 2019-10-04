@@ -1,25 +1,23 @@
 import {
   Component,
-  EventEmitter,
   forwardRef,
   HostListener,
   Input,
   OnDestroy,
   OnInit,
-  Output,
   Renderer2,
   ViewChild,
   ViewContainerRef
-} from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { DomSanitizer } from "@angular/platform-browser";
-import { Subscription } from "rxjs";
-import { EditorSandbox } from "../../editor.sandbox";
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { EditorSandbox } from '../../editor.sandbox';
 
 @Component({
-  selector: "editor",
-  templateUrl: "./editor.component.html",
-  styleUrls: ["./editor.component.scss"],
+  selector: 'editor',
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -31,8 +29,7 @@ import { EditorSandbox } from "../../editor.sandbox";
 export class EditorComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() disabled = false;
   @Input() config: string[][] = [];
-  @Output() change: EventEmitter<string> = new EventEmitter();
-  @ViewChild("editor", { static: true, read: ViewContainerRef }) editorRef;
+  @ViewChild('editor', { static: true, read: ViewContainerRef }) editorRef;
 
   private $change: Subscription;
 
@@ -44,13 +41,11 @@ export class EditorComponent implements OnInit, OnDestroy, ControlValueAccessor 
     }
   }
 
-  @HostListener("keyup", ["$event"])
   keyup (event: any) {
     this.onChange();
     this.updateCaret(event);
   }
 
-  @HostListener("click", ["$event"])
   click (event: any) {
     this.updateCaret(event);
   }
@@ -83,17 +78,14 @@ export class EditorComponent implements OnInit, OnDestroy, ControlValueAccessor 
 
   public writeValue (value: any): void {
     if (!value) {
-      value = "";
+      value = '';
     }
-    this.$renderer.setProperty(this.editorRef.element.nativeElement, "innerHTML", value);
+    this.$renderer.setProperty(this.editorRef.element.nativeElement, 'innerHTML', value);
   }
 
   public updateCaret ($event: any) {
     const selection = document.getSelection();
-    this.$editor.range.next({
-      start: selection['baseOffset'],
-      end: selection['focusOffset']
-    });
+    this.$editor.selection.next(selection.focusNode['textContent']);
   }
 
   public ngOnDestroy () {
